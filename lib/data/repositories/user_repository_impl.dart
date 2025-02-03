@@ -28,7 +28,7 @@ class UserRepositoryImpl implements UserRepository {
         localDataSource.cacheUsers(users);
 
         return Right(users);
-      } on DioError {
+      } on DioException {
         return Left(ServerFailure());
       }
     } else {

@@ -23,8 +23,7 @@ void main() {
   test(
     'should return list of [Post] if it is successful',
     () async {
-      when(mockPostRemoteDataSource.getUserPosts(any))
-          .thenAnswer((_) async => postModels);
+      when(mockPostRemoteDataSource.getUserPosts(any)).thenAnswer((_) async => postModels);
 
       final result = await postRepositoryImpl.getUserPosts(1);
 
@@ -38,7 +37,7 @@ void main() {
     'should return [ServerFailure] if it us successful',
     () async {
       when(mockPostRemoteDataSource.getUserPosts(any)).thenThrow(
-        DioError(
+        DioException(
           requestOptions: RequestOptions(
             path: '',
           ),

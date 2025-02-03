@@ -37,6 +37,6 @@ void main() {
 
     final call = postRemoteDataSourceImpl.getUserPosts;
 
-    expect(() => call(1), throwsA(const TypeMatcher<DioError>()));
+    expect(() => call(1), throwsA(const TypeMatcher<DioException>()));
   });
 }

@@ -32,13 +32,12 @@ void main() {
       expect(result, equals(users));
     });
 
-    test('should throw [ServerException] for response code is 404 or other',
-        () async {
+    test('should throw [ServerException] for response code is 404 or other', () async {
       adapter.createMockResponseStub('Something went wrong!', 404);
 
       final call = dataSource.getUsers;
 
-      expect(() => call(), throwsA(const TypeMatcher<DioError>()));
+      expect(() => call(), throwsA(const TypeMatcher<DioException>()));
     });
   });
 }

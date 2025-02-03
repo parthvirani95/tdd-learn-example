@@ -75,7 +75,7 @@ void main() {
 
       test('should return server failure when it is unsuccessful', () async {
         when(mockUserRemoteDataSource.getUsers()).thenThrow(
-          DioError(requestOptions: RequestOptions(path: '')),
+          DioException(requestOptions: RequestOptions(path: '')),
         );
 
         final result = await userRepositoryImpl.getUsers();
@@ -94,8 +94,7 @@ void main() {
       test(
         'should return last cached users when the cached data is present',
         () async {
-          when(mockUserLocalDataSource.getLastUsers())
-              .thenAnswer((_) async => userModels);
+          when(mockUserLocalDataSource.getLastUsers()).thenAnswer((_) async => userModels);
 
           final result = await userRepositoryImpl.getUsers();
 
@@ -108,8 +107,7 @@ void main() {
       test(
         'should return [CacheFailure]  when there is no cached data',
         () async {
-          when(mockUserLocalDataSource.getLastUsers())
-              .thenThrow(CacheException());
+          when(mockUserLocalDataSource.getLastUsers()).thenThrow(CacheException());
 
           final result = await userRepositoryImpl.getUsers();
 

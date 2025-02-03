@@ -15,7 +15,7 @@ class PostRepositoryImpl implements PostRepository {
   Future<Either<Failure, List<Post>>> getUserPosts(int userId) async {
     try {
       return Right(await postRemoteDataSource.getUserPosts(userId));
-    } on DioError {
+    } on DioException {
       return Left(ServerFailure());
     }
   }

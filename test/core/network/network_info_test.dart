@@ -15,10 +15,9 @@ void main() {
   });
 
   group('isConnected', () {
-    test('should call Connectivity.checkConnectivity() to check network state',
-        () async {
+    test('should call Connectivity.checkConnectivity() to check network state', () async {
       when(mockConnectivity.checkConnectivity()).thenAnswer(
-        (_) async => ConnectivityResult.wifi,
+        (_) async => [ConnectivityResult.wifi],
       );
 
       final result = await networkInfoImpl.isConnected;

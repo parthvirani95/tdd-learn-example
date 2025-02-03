@@ -13,7 +13,7 @@ class FailureWidget extends StatelessWidget {
     return Center(
       child: Text(
         message ?? 'Something went wrong!',
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
   }
